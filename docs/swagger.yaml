@@ -1,0 +1,126 @@
+basePath: /api/v1
+definitions:
+  domain.Ad:
+    properties:
+      condition:
+        $ref: '#/definitions/domain.Condition'
+      endAt:
+        type: string
+      startAt:
+        type: string
+      title:
+        type: string
+    type: object
+  domain.Condition:
+    properties:
+      ageEnd:
+        type: integer
+      ageStart:
+        type: integer
+      country:
+        items:
+          type: string
+        type: array
+      gender:
+        items:
+          type: string
+        type: array
+      platform:
+        items:
+          type: string
+        type: array
+    type: object
+  domain.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  domain.SuccessResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: 127.0.0.1:3000
+info:
+  contact: {}
+  description: The server for AD services
+  title: Dcard AD API
+  version: "1.0"
+paths:
+  /ad:
+    get:
+      description: Get a list of ads with queries
+      parameters:
+      - description: Get ads starting from offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - description: Get how many ads, default is 5
+        in: query
+        name: limit
+        type: integer
+      - description: Target age
+        in: query
+        name: age
+        type: integer
+      - description: Target gender
+        in: query
+        name: gender
+        type: integer
+      - description: Target country
+        in: query
+        name: country
+        type: string
+      - description: Target platform
+        in: query
+        name: platform
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{\"items\": [ad, ...]}'
+          schema:
+            additionalProperties:
+              items:
+                $ref: '#/definitions/domain.Ad'
+              type: array
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: Public API
+      tags:
+      - ad
+    post:
+      consumes:
+      - application/json
+      description: Create an ad
+      parameters:
+      - description: Add an ad
+        in: body
+        name: ad
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Ad'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponse'
+      summary: Admin API
+      tags:
+      - ad
+swagger: "2.0"

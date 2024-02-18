@@ -1,0 +1,29 @@
+curl -X GET -H "Content-Type: application/json" \
+"http://127.0.0.1:3000/api/v1/ad?offset=0&limit=10&age=24&gender=M&country=TW&platform=ios"
+
+curl -X POST -H "Content-Type: application/json" \
+"http://127.0.0.1:3000/api/v1/ad" \
+--data '{
+    "title": "AD 1",
+    "startAt": "2024-01-01T00:00:00.000Z",
+    "endAt": "2024-02-20T08:00:00.000Z",
+    "condition": {
+        "ageStart": 20,
+        "ageEnd": 30,
+        "gender": ["M"],
+        "country": ["TW", "JP"],
+        "platform": ["android", "ios"]
+    }
+}'
+
+curl -X POST -H "Content-Type: application/json" \
+"http://127.0.0.1:3000/api/v1/ad" \
+--data '{
+    "title": "AD 1",
+    "startAt": "2024-01-01T00:00:00.000Z",
+    "endAt": "2024-02-20T08:00:00.000Z",
+    "condition": {
+        "ageStart": 20,
+        "ageEnd": 30
+    }
+}'
