@@ -35,6 +35,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
+                        "default": 5,
                         "description": "Get how many ads, default is 5",
                         "name": "limit",
                         "in": "query"

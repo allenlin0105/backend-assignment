@@ -14,6 +14,8 @@ MYSQL_DATABASE=test
 ```
 2. Run `go run ./main.go` to test the API
 
+## API Spec
+http://localhost:3000/swagger/index.html
 
 ## Design
 I create 4 tables for ads, genders, countries, and platforms, respectively. The schema for each table is shown below.

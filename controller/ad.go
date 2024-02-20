@@ -45,7 +45,7 @@ func (ac *AdController) PostAd(ctx *gin.Context) {
 // @Tags              ad
 // @Produce           json
 // @Param             offset   query int    true  "Get ads starting from offset"
-// @Param             limit    query int    false "Get how many ads, default is 5"
+// @Param             limit    query int    false "Get how many ads" default(5)
 // @Param             age      query int    false "Target age"
 // @Param             gender   query int    false "Target gender"
 // @Param             country  query string false "Target country"

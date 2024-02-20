@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
 
@@ -36,6 +37,7 @@ func main() {
 	timeout := time.Duration(t) * time.Second
 
 	app := gin.Default()
+	app.Use(cors.Default())
 
 	router.SetUpRoutes(app, db, timeout)
 

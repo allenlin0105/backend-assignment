@@ -56,7 +56,8 @@ paths:
         name: offset
         required: true
         type: integer
-      - description: Get how many ads, default is 5
+      - default: 5
+        description: Get how many ads, default is 5
         in: query
         name: limit
         type: integer
