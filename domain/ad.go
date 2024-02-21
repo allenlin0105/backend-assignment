@@ -3,9 +3,9 @@ package domain
 import "context"
 
 type Ad struct {
-	Title     string     `json:"title"`
-	StartAt   string     `json:"startAt,omitempty"`
-	EndAt     string     `json:"endAt"`
+	Title     string     `json:"title" binding:"required"`
+	StartAt   string     `json:"startAt,omitempty" binding:"required"`
+	EndAt     string     `json:"endAt" binding:"required"`
 	Condition *Condition `json:"condition,omitempty"`
 }
 

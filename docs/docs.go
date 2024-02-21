@@ -36,7 +36,7 @@ const docTemplate = `{
                     {
                         "type": "integer",
                         "default": 5,
-                        "description": "Get how many ads, default is 5",
+                        "description": "Get how many ads",
                         "name": "limit",
                         "in": "query"
                     },
@@ -135,6 +135,11 @@ const docTemplate = `{
     "definitions": {
         "domain.Ad": {
             "type": "object",
+            "required": [
+                "endAt",
+                "startAt",
+                "title"
+            ],
             "properties": {
                 "condition": {
                     "$ref": "#/definitions/domain.Condition"

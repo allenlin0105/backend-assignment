@@ -10,6 +10,10 @@ definitions:
         type: string
       title:
         type: string
+    required:
+    - endAt
+    - startAt
+    - title
     type: object
   domain.Condition:
     properties:
@@ -57,7 +61,7 @@ paths:
         required: true
         type: integer
       - default: 5
-        description: Get how many ads, default is 5
+        description: Get how many ads
         in: query
         name: limit
         type: integer
